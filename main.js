@@ -3,6 +3,9 @@
 //donutContainer//
 const donutHtmlContainer = document. querySelector('#donutContainer');
 const cartHtmlContainer = document.querySelector('#cart');
+const pennContainer = document.querySelector('#penn');
+
+
 const today = new Date();
 
 // fredag/ måndag rabat
@@ -11,71 +14,221 @@ const isMonday= today.getDay()=== 1;
 const currentHour = today.getHours ='';
 
 //timer
-
 const letslowneesTimeout = setTimeout(stupidCustomerMessage, 1000 * 60 * 15 );
+
+
 
 const donuts = [
 {
-  name:'donut 1',
-  price:10,
-  image:[
+  name:'Olw Hot Cheddar Chips',
+  price:23,
+  img:
     {
-      src:'bild1.jpg',
-      alt:'rosa munk',
+      src:'images/chips1.jpg',
+      alt:'Olw Hot Cheddar Chips',
+      width: 200,
+      height: 350,
 
     },
-    {
-      src:'blid2.jpg',
-      alt:'rosa munk',
-    },   
-  ],
+       
+  
   rating:3,
   amount: 0,
-  category:'sweet'
+  category:'snack'
 },
 
 {
-  name:'donut 2',
-  price:50,
-  image:[
+  name:'Ostbagar Cheez Doodles ',
+  price:29,
+  img:
     {
-      src:'bild1.jpg',
-      alt:'rosa munk',
-
-    },
-    {
-      src:'blid2.jpg',
-      alt:'rosa munk',
-    },   
-  ],
+        src:'images/Ostbagar.jpg',
+        alt:'Ostbagar Cheez Doodles ',
+        width: 200,
+        height: 350,
+  
+      },
+           
   rating:3,
   amount: 0,
-  category:'sweet'
+  category:'snack'
+},
+{
+  name: 'Chips Ranch & sourcream',
+  price:31,
+  img:
+  {
+    src:'images/Chips Ranch.jpg',
+    alt:'Estrella Ranch & Sourcream är finräfflade chips 275g',
+    width: 200,
+    height: 350,
+
+  },
+     
+  rating:3,
+  amount: 0,
+  category:'snack'
 },
 
 {
-  name: 'donut 3',
-  price:20,
-  image:[
-    {
-      src:'bild1.jpg',
-      alt:'rosa munk',
+  name: 'Olw Chips Havssalt',
+  price:32,
+  img:
+  {
+    src:'images/Olw Chips Havssalt.jpg',
+    alt:'Olw Chips Havssalt & svartpeppar',
+    width: 200,
+    height: 350,
 
-    },
-    {
-      src:'blid2.jpg',
-      alt:'rosa munk',
-    },   
-  ],
+  },
+     
   rating:3,
   amount: 0,
-  category:'sweet'
+  category:'snack'
 },
+
+{
+  name: 'Tortillachips Sweet Chili & Pepper ',
+  price:32,
+  img:
+  {
+    src:'images/chips2.jpg',
+    alt:'Tortillachips Sweet Chili & Pepper ',
+    width: 200,
+    height: 350,
+
+  },
+     
+  rating:3,
+  amount: 0,
+  category:'snack'
+},
+
+{
+  name: 'Ostbagar Cheez Cruncherz ',
+  price:32,
+  img:
+  {
+    src:'images/Ostbagar 2.jpg',
+    alt:'Tortillachips Sweet Chili & Pepper ',
+    width: 200,
+    height: 350,
+
+  },
+     
+  rating:3,
+  amount: 0,
+  category:'snack'
+},
+
+{
+  name:'Chips Vickning',
+  price:33,
+  img:
+    {
+      src:'images/Chips Vickning.jpg',
+      alt:' krispiga grovräfflade potatischips med lätt sälta 275g',
+      width: 200,
+      height: 350,
+
+    },
+       
+  
+  rating:3,
+  amount: 0,
+  category:'snack'
+},
+{
+name:'Olw Chips Havssalt',
+price:23,
+img:
+  {
+    src:'images/238780 copy.jpg',
+    alt:'Chips Havssalt & Svartpeppar',
+    width: 200,
+    height: 350,
+
+  },
+     
+
+rating:3,
+amount: 0,
+category:'snack'
+},
+{
+name:'Tortillachips ',
+price:29,
+img:
+  {
+    src:'images/doritos.jpg',
+    alt:'Tortillachips Sweet Chili & Pepper 170g',
+    width: 200,
+    height: 350,
+
+  },
+     
+
+rating:3,
+amount: 0,
+category:'snack'
+},
+{
+  name:'Nachochips ',
+  price:16,
+  img:
+    {
+      src:'images/Nachochips.jpg',
+      alt:'nachosallad med, gräddfil, rädisor och tacokryddad färs.',
+      width: 200,
+      height: 350,
+  
+    },
+       
+  
+  rating:3,
+  amount: 0,
+  category:'snack'
+  },
+  {
+    name:'Chips Dill ',
+    price:34,
+    img:
+      {
+        src:'images/estrella.jpg',
+        alt:' chips med dil smak',
+        width: 200,
+        height: 350,
+    
+      },
+         
+    
+    rating:3,
+    amount: 0,
+    category:'snack'
+    },
+
+
 
 ];
 
+// bild
+/*donuts.forEach(donut=> {
+  console.log(donut);
+  pennContainer.innerHTML +=`
+  <article>
+  <h2>${donut.name}</h2>
+  <img src="${donut.img[0].src}" alt="${donut.img.alt}" width="${donut.img.width}"
+  heigh= "${donut.img.height}" loading="lazy">
+  </article>
+  `;
+
+});
+*/
+
+
+
 function stupidCustomerMessage(){
-  alert ( 'du är för långsam att beställa !');
+  alert ( 'Du är för långsam att beställa ! skynda på');
 }
 
 
@@ -117,11 +270,14 @@ function printDonuts(){
     donutHtmlContainer.innerHTML +=
     `<article>
       <h3>${donut.name} </h3>
+      <img src="${donut.img.src}" alt="${donut.img.alt}" width="${donut.img.width}"
+      heigh= "${donut.img.height}" loading="lazy">
       <div>Price: <span>${donut.price * priceIncrease}</span> kr </div>
-      <div>Raing: <span>${donut.rating}</span> kr </div>
+      <div>Raing: <span>${donut.rating}</span></div>
       <div>Amount: <span>${donut.amount}</span> </div>
       <button class="minus" data-id="${index}"> - </button>
       <button class="plus" data-id="${index}"> + </button>
+  
       </article>
     `;
 
