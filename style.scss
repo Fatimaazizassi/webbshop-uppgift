@@ -14,7 +14,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+/*
 a {
   font-weight: 500;
   color: #646cff;
@@ -95,22 +95,57 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
-img{
-  display: block;
-  max-width: 100%;
-  height:auto;
+}  
+  */
 
- }
+  .hidden{
+    display: none;
+  }
+  
+  h1{
+    grid-column:span 12;
+    text-align: center;
+    color: #5c0206;
+  }
+
+
 
  main{
   display: grid;
   flex-direction: column;
   grid-template-columns: repeat(12, 1fr);
- 
-
+  background-color:#63f9e5;
+  
+ }
+ #chipsesContainer{
+  grid-column: span 12;
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(12, 1fr);
  }
 
+ #cart{
+  display: grid;
+  grid-column: span 12;
+  font-size: large;
+  justify-content: end;
+ }
+article{
+  width: 100%;
+  grid-column:  span 4;
+  font-size: 1.5rem;
+  color: #0a0909;
+  font-family:'Times New Roman', Times, serif;
+  font-size:large;
+  display: grid;
+  justify-items: center;
+}
+ .chips-title{
+  font-size: 1,95rem;
+  color: #5c0206;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  justify-items: center;
+ }
 
 
  

@@ -13,15 +13,56 @@
    
     <h1>Snack Fabric</h1>
     
-    <div id="donutsContainer"></div>
+    <div id="chipsesContainer"></div>
     <h2>Cart</h2>
+    <!-- cash-->
     <div id="cart"></div>
-    
+    <!-- bild id-->
     <div id="chips"></div>
+
+    <!-- card & faktura-->
+    <div class="payment-option">
+      <div class="selector">
+        <label>
+          <input type="radio" name="payment-option" value="invoice">
+          <span>Faktura</span>
+        </label>
+        <label>
+          <input type="radio" name="payment-option" value="card">
+          <span>Kort</span>
+        </label>
+      </div>
+
+      <div class="invoice">
+        <label>
+         <span>Personnummer</span>
+         <input type="number" name="personal-id">
+        </label>
+      </div>
+      <!--card-->
+      <div class="card hidden">
+        <label>
+          <span>Kortnummer</span>
+          <input type="number">
+        </label>
+        <label>
+          <span>Datum</span>
+          <span>
+            <input type="number" class="small" placeholder="YY">/ <input type="number" class="small">
+          </span>
+        </label>
+        <span>CVC</span>
+        <input type="number" placeholder="123">
+      </div>
+
+      <button id="order" disabled> Beställ</button>
+
+    </div>
+
     
   </main>
 
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="main.js"></script>
   
   </body>
 </html>

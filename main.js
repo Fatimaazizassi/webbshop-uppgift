@@ -1,7 +1,7 @@
-/*import './style.scss';*/
+ import './style.scss';
 
-//donutContainer//
-const donutHtmlContainer = document. querySelector('#donutsContainer');
+//chipsContainer//
+const chipsHtmlContainer = document. querySelector('#chipsesContainer');
 const cartHtmlContainer = document.querySelector('#cart');
 const chipsContainer = document.querySelector('#chips');
 
@@ -18,7 +18,7 @@ const letslowneesTimeout = setTimeout(stupidCustomerMessage, 1000 * 60 * 15 );
 
 
 
-const donuts = [
+const chipses = [
 {
   name:'Olw Hot Cheddar Chips',
   price:23,
@@ -26,15 +26,17 @@ const donuts = [
     {
       src:'images/chips1.jpg',
       alt:'Olw Hot Cheddar Chips',
-      width: 200,
-      height: 350,
+      width: 300,
+      height: 450,
+      
 
     },
        
   
   rating:3,
   amount: 0,
-  category:'snack'
+  category:'snack',
+  description:'Flavored chips popular OLW cheez cruncherz flamin',
 },
 
 {
@@ -44,15 +46,32 @@ const donuts = [
     {
         src:'images/Ostbagar.jpg',
         alt:'Ostbagar Cheez Doodles ',
-        width: 200,
-        height: 350,
-  
+        width: 300,
+      height: 450,
       },
            
   rating:3,
   amount: 0,
-  category:'snack'
+  category:'snack',
+  description:'Brittle and crispy corn rings flavored with mild cheese seasoning.',
 },
+{
+  name: 'Doritos Hot Chili  ',
+  price:32,
+  img:
+  {
+    src:'images/chips2.jpg',
+    alt:'Tortillachips Sweet Chili & Pepper ',
+    width: 300,
+    height: 450,
+  },
+     
+  rating:3,
+  amount: 0,
+  category:'snack',
+  description:'tortilla chip made from freshly roasted corn, with the delicious taste of sweet chili peppe',
+},
+
 {
   name: 'Chips Ranch & sourcream',
   price:31,
@@ -60,65 +79,50 @@ const donuts = [
   {
     src:'images/Chips Ranch.jpg',
     alt:'Estrella Ranch & Sourcream är finräfflade chips 275g',
-    width: 200,
-    height: 350,
-
+    width: 300,
+      height: 450,
   },
      
   rating:3,
   amount: 0,
-  category:'snack'
+  category:'snack',
+  description:'Finely grooved potato chips with garlic, tomato, cheese, onion and sour cream flavour.',
 },
 
 {
-  name: 'Olw Chips Havssalt',
+  name: 'Olw Chips Havssalt ',
   price:32,
   img:
   {
     src:'images/Olw Chips Havssalt.jpg',
     alt:'Olw Chips Havssalt & svartpeppar',
-    width: 200,
-    height: 350,
-
+    width: 300,
+    height: 450,
   },
      
   rating:3,
   amount: 0,
-  category:'snack'
+  category:'snack',
+  description:'Coarsely grooved with daring tones of sea salt & black pepper!',
 },
 
-{
-  name: 'Tortillachips Sweet Chili & Pepper ',
-  price:32,
-  img:
-  {
-    src:'images/chips2.jpg',
-    alt:'Tortillachips Sweet Chili & Pepper ',
-    width: 200,
-    height: 350,
-
-  },
-     
-  rating:3,
-  amount: 0,
-  category:'snack'
-},
 
 {
-  name: 'Ostbagar Cheez Cruncherz ',
+  name: 'Ostbagar Cruncherz ',
   price:32,
   img:
   {
     src:'images/Ostbagar 2.jpg',
     alt:'Tortillachips Sweet Chili & Pepper ',
-    width: 200,
-    height: 350,
+    width: 300,
+    height: 450,
 
   },
      
   rating:3,
   amount: 0,
-  category:'snack'
+  category:'snack',
+  description:'Cheese bows with the same good taste as the original cheez doodles but extra crispy and crunchy',
 },
 
 {
@@ -128,49 +132,52 @@ const donuts = [
     {
       src:'images/Chips Vickning.jpg',
       alt:' krispiga grovräfflade potatischips med lätt sälta 275g',
-      width: 200,
-      height: 350,
+      width: 300,
+      height: 450,
 
     },
        
   
   rating:3,
   amount: 0,
-  category:'snack'
+  category:'snack',
+  description:'Ribbed potato chips, lightly salted 250g',
 },
 {
-name:'Olw Chips Havssalt',
+name:'Lays Chips & Onion ',
 price:23,
 img:
   {
-    src:'images/238780 copy.jpg',
-    alt:'Chips Havssalt & Svartpeppar',
-    width: 200,
-    height: 350,
+    src:'images/lays.jpg',
+    alt:'Sour Cream & Onion ',
+    width: 300,
+    height: 450,
 
   },
      
 
 rating:3,
 amount: 0,
-category:'snack'
+category:'snack',
+description:'Lays Chips Sour Cream & Onion ',
 },
 {
-name:'Tortillachips ',
+name:'Doritos Sweet Chili  ',
 price:29,
 img:
   {
     src:'images/doritos.jpg',
     alt:'Tortillachips Sweet Chili & Pepper 170g',
-    width: 200,
-    height: 350,
+    width: 300,
+    height: 450,
 
   },
      
 
 rating:3,
 amount: 0,
-category:'snack'
+category:'snack',
+description:'tortilla chip made from freshly roasted corn, with the delicious taste of sweet chili pepper',
 },
 {
   name:'Nachochips ',
@@ -179,52 +186,39 @@ category:'snack'
     {
       src:'images/Nachochips.jpg',
       alt:'nachosallad med, gräddfil, rädisor och tacokryddad färs.',
-      width: 200,
-      height: 350,
-  
+      width: 300,
+      height: 450,
     },
        
   
   rating:3,
   amount: 0,
-  category:'snack'
+  category:'snack',
+  description:'Nachos are baked on corn flour and then deep fried',
   },
   {
-    name:'Chips Dill ',
+    name:'Estrella Dill Chips  ',
     price:34,
     img:
       {
         src:'images/estrella.jpg',
         alt:' chips med dil smak',
-        width: 200,
-        height: 350,
+        width: 300,
+        height: 450,
     
       },
          
     
     rating:3,
     amount: 0,
-    category:'snack'
+    category:'snack',
+    description:'Ribbed potato chips with dill and chive flavor from Estrella.',
     },
 
 
 
 ];
-
-// bild
- donuts.forEach(donut=> {
-  console.log(donut);
-  chipsContainer.innerHTML +=`
-  <article>
-  <h2>${donut.name}</h2>
-  <img src="${donut.img.src}" alt="${donut.img.alt}" width="${donut.img.width}"
-  heigh= "${donut.img.height}" loading="lazy">
-  </article>
-  `;
-
-});
-
-
+ 
 
 
 function stupidCustomerMessage(){
@@ -232,22 +226,21 @@ function stupidCustomerMessage(){
 }
 
 
-
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
-  if(donuts[index].amount <= 0){
-    donuts[index].amount = 0;
+   if(chipses[index].amount <= 0){
+     chipses[index].amount = 0;
   } else{
-    donuts[index].amount -= 1;
-  }
+    chipses[index].amount -= 1;
+   }
   
-  printDonuts();
+  printchipses();
 }
 
 function increaseAmount(e) {
   const index =e.currentTarget.dataset.id;
-    donuts[index].amount += 1;
-    printDonuts();
+    chipses[index].amount += 1;
+    printchipses();
   }
   // friday & > 15:00 && m0nday & <=3
   function getPriceMultiplier (){
@@ -261,20 +254,21 @@ function increaseAmount(e) {
 
   }
  
-function printDonuts(){
-  donutHtmlContainer.innerHTML = '';
+function printchipses(){
+  chipsHtmlContainer.innerHTML = '';
   let priceIncrease= getPriceMultiplier();
   
-  donuts.forEach((donut, index) => {
-    console.log(donut);
-    donutHtmlContainer.innerHTML +=
+  chipses.forEach((chips, index) => {
+   // console.log(chips);
+    chipsHtmlContainer.innerHTML +=
     `<article>
-      <h3>${donut.name} </h3>
-      <img src="${donut.img.src}" alt="${donut.img.alt}" width="${donut.img.width}"
-      heigh= "${donut.img.height}" loading="lazy">
-      <div>Price: <span>${donut.price * priceIncrease}</span> kr </div>
-      <div>Raing: <span>${donut.rating}</span></div>
-      <div>Amount: <span>${donut.amount}</span> </div>
+      <h3 class=" chips-title">${chips.name} </h3>
+      <img src="${chips.img.src}" alt="${chips.img.alt}" width="${chips.img.width}"
+      heigh= "${chips.img.height}" loading="lazy">
+      <div class=" price">Price: <span>${chips.price * priceIncrease}</span> kr </div>
+      <div class=" raning">Raing: <span>${chips.rating}</span></div>
+      <div class="description">Description: <span>${chips.description}</span><div>
+      <div class="amount">Amount: <span>${chips.amount}</span> </div>
       <button class="minus" data-id="${index}"> - </button>
       <button class="plus" data-id="${index}"> + </button>
   
@@ -294,30 +288,30 @@ function printDonuts(){
 
   });
 
-  printCartDonuts(); // anropa summan
+  printCartchipses(); // anropa summan
 
 }
 
-function printCartDonuts(){
+function printCartchipses(){
   cartHtmlContainer.innerHTML ='';
     let sum = 0;  // total summan
-    let orderDonutAmount = 0;
+    let orderchipsAmount = 0;
     let msg=''; // 10% rabat
     let priceIncrease = getPriceMultiplier();
 
     //cart
-  donuts.forEach(donut => {
-    orderDonutAmount += donut.amount;
-    if(donut.amount > 0) {
-      let donutPrice = donut.price;
-        if (donut.amount >= 10){
-          donutPrice *= 0.9;
+  chipses.forEach(chips => {
+    orderchipsAmount += chips.amount;
+    if(chips.amount > 0) {
+      let chipsPrice = chips.price;
+        if (chips.amount >= 10){
+          chipsPrice *= 0.9;
         }
-      const adjustDounatPrice = donut.price * priceIncrease;
-      sum += donut.amount * adjustDounatPrice;
+      const adjustDounatPrice = chips.price * priceIncrease;
+      sum += chips.amount * adjustDounatPrice;
       cartHtmlContainer.innerHTML += `
       <article>
-        <span> ${donut.name}</span> | <span>${donut.amount}</span> | <span> ${donut.amount * adjustDounatPrice} kr </span>
+        <span> ${chips.name}</span> | <span>${chips.amount}</span> | <span> ${chips.amount * adjustDounatPrice} kr </span>
        </article>
       `;
     }
@@ -339,7 +333,7 @@ function printCartDonuts(){
   cartHtmlContainer.innerHTML += `<p>Total sum: ${sum} Kr</p>`;
   cartHtmlContainer.innerHTML += `<div> ${msg}</div>`;
 
-  if ( orderDonutAmount > 15){
+  if ( orderchipsAmount > 15){
     cartHtmlContainer.innerHTML += '<p> Shipping: 0 Kr</p>';
   } else{
 
@@ -347,5 +341,10 @@ function printCartDonuts(){
 
   }
 
+  // kort & faktora
+ const cardInvoiceRadios = document.querySelector('input[name="payment-option"]');
+ console.log(cardInvoiceRadios);
+ 
+
 }
-printDonuts();
+printchipses();
