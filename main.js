@@ -1,9 +1,9 @@
-'./style.scss';
+/*import './style.scss';*/
 
 //donutContainer//
-const donutHtmlContainer = document. querySelector('#donutContainer');
+const donutHtmlContainer = document. querySelector('#donutsContainer');
 const cartHtmlContainer = document.querySelector('#cart');
-const pennContainer = document.querySelector('#penn');
+const chipsContainer = document.querySelector('#chips');
 
 
 const today = new Date();
@@ -212,18 +212,18 @@ category:'snack'
 ];
 
 // bild
-/*donuts.forEach(donut=> {
+ donuts.forEach(donut=> {
   console.log(donut);
-  pennContainer.innerHTML +=`
+  chipsContainer.innerHTML +=`
   <article>
   <h2>${donut.name}</h2>
-  <img src="${donut.img[0].src}" alt="${donut.img.alt}" width="${donut.img.width}"
+  <img src="${donut.img.src}" alt="${donut.img.alt}" width="${donut.img.width}"
   heigh= "${donut.img.height}" loading="lazy">
   </article>
   `;
 
 });
-*/
+
 
 
 
@@ -253,7 +253,7 @@ function increaseAmount(e) {
   function getPriceMultiplier (){
     if ((isFriday && currentHour >= 15) || (isMonday && currentHour <= 3)){
     return 1.15;
-    return 1;
+    
   
 
     }
@@ -266,7 +266,7 @@ function printDonuts(){
   let priceIncrease= getPriceMultiplier();
   
   donuts.forEach((donut, index) => {
-    /*console.log(donut);*/
+    console.log(donut);
     donutHtmlContainer.innerHTML +=
     `<article>
       <h3>${donut.name} </h3>
@@ -313,11 +313,11 @@ function printCartDonuts(){
         if (donut.amount >= 10){
           donutPrice *= 0.9;
         }
-      const adjusteDounatPrice = donut.price * priceIncrease;
-      sum += donut.amount * adjusteDounatPrice;
+      const adjustDounatPrice = donut.price * priceIncrease;
+      sum += donut.amount * adjustDounatPrice;
       cartHtmlContainer.innerHTML += `
       <article>
-        <span> ${donut.name}</span> | <span>${donut.amount}</span> | <span> ${donut.amount * adjusteDounatPrice} kr </span>
+        <span> ${donut.name}</span> | <span>${donut.amount}</span> | <span> ${donut.amount * adjustDounatPrice} kr </span>
        </article>
       `;
     }
@@ -349,4 +349,3 @@ function printCartDonuts(){
 
 }
 printDonuts();
-
