@@ -1,5 +1,94 @@
  import './style.scss';
 
+  // kort & faktora
+  const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment-option"]'));
+  const inputs=[
+    document.querySelector('#creditCardNumber'),
+    document.querySelector('#creditCardYear'),
+    document.querySelector('#creditCardMonth'),
+    document.querySelector('#creditCardCvc'),
+    document.querySelector('#personalID')
+  ];
+  const invoiceOption = document.querySelector('#invoice');
+  const cardOption = document.querySelector('#card');
+
+   // defauld option till faktora
+   let selectedPaymentOption = 'card'
+  // Regex
+  const personalIdRegEx = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
+
+
+  //aktivera knapp beställ
+  const orderBtn = document.querySelector('#orderBtn');
+  // Regex
+ // MasterCard
+ const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/); 
+  
+  // Add event listeners
+  inputs.forEach(input => {
+    input.addEventListener('focusout', activaiteOrderButton);
+    input.addEventListener('change', activaiteOrderButton);
+  });
+  cardInvoiceRadios.forEach(radioBtn =>{
+   radioBtn.addEventListener('change', switchPaymentMethod);
+ 
+  });
+
+ /**
+  * Switches between invoice payment method and
+  * card payment method. Toggles their visibility.
+  */
+  function switchPaymentMethod(e) {
+   invoiceOption.classList.toggle('hidden');
+   cardOption.classList.toggle('hidden');
+
+   selectedPaymentOption = e.target.value;
+  
+  }
+  
+  function isPersonalIdNumbervalid(){
+   return personalIdRegEx.exec(personalID.value);
+    
+  }
+  /**
+ * Activate order button if all fields are
+ * correctly filled.
+ */
+  function activaiteOrderButton() {
+    orderBtn.setAttribute('disabled', '');
+  
+ // kotrol activeted faktora
+   if (selectedPaymentOption === 'invoice' && isPersonalIdNumbervalid()){
+      orderBtn.removeAttribute ('disabled');
+ 
+   } else if (selectedPaymentOption ==='invoice' && !isPersonalIdNumbervalid()) {
+     return;
+   } else if (selectedPaymentOption ==='card'){
+     // check card number
+     if (creditCardNumberRegEx.exec(creditCardNumber.value) === null) {
+ 
+       return;
+     }
+     // kontrol card year
+     let year = Number(creditCardYear.value);
+     const today = new Date();
+     const shortYear = Number(String(today.getFullYear()).substring(2));
+ 
+     if (year > shortYear + 2 || year < shortYear) {
+       console.warn('Credit card year not valid.');
+       return;
+     }
+     // Check card CVC
+     if (creditCardCvc.value.length !== 3) {
+       console.warn('CVC not valid.');
+       return;
+   }
+    
+ }
+ orderBtn.removeAttribute ('disabled');
+ 
+}
+
 //chipsContainer//
 const chipsHtmlContainer = document. querySelector('#chipsesContainer');
 const cartHtmlContainer = document.querySelector('#cart');
@@ -218,13 +307,10 @@ description:'tortilla chip made from freshly roasted corn, with the delicious ta
 
 
 ];
- 
-
 
 function stupidCustomerMessage(){
   alert ( 'Du är för långsam att beställa ! skynda på');
 }
-
 
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
@@ -340,11 +426,6 @@ function printCartchipses(){
   cartHtmlContainer.innerHTML += `<p> Shipping: ${Math.round(25 + (0.1 * sum))} Kr</p>`;
 
   }
-
-  // kort & faktora
- const cardInvoiceRadios = document.querySelector('input[name="payment-option"]');
- console.log(cardInvoiceRadios);
- 
 
 }
 printchipses();

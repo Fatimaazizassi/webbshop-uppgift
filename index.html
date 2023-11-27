@@ -12,6 +12,45 @@
 
    
     <h1>Snack Fabric</h1>
+
+    <div class="payment-options">
+      <div class="selector">
+        <label>
+          <input type="radio" name="payment-option" value="invoice" >
+          <span>Faktura</span>
+        </label>
+        <label>
+          <input type="radio" name="payment-option" value="card" checked>
+          <span>Kort</span>
+        </label>
+      </div>
+
+      <div class="invoice hidden" id="invoice">
+        <label>
+         <span>Personnummer</span>
+         <input type="text" name="personal-id" id="personalID" value="19850505-1234">
+        </label>
+      </div>
+      <!--card-->
+      <div class="card" id="card">
+        <label>
+          <span>Kortnummer</span>
+          <input type="number" id="creditCardNumber" value="5100080000000000">
+        </label>
+        <label>
+          <span>Datum</span>
+          <span>
+            <input type="number" class="small" placeholder="YY" id="creditCardYear">/ 
+            <input type="number" class="small" placeholder="MM" id="creditCardMonth">
+          </span>
+        </label>
+        <span>CVC</span>
+        <input type="number" placeholder="123" id="creditCardCvc">
+      </div>
+
+      <button id="orderBtn" disabled> Beställ</button>
+
+    </div>
     
     <div id="chipsesContainer"></div>
     <h2>Cart</h2>
@@ -21,43 +60,7 @@
     <div id="chips"></div>
 
     <!-- card & faktura-->
-    <div class="payment-option">
-      <div class="selector">
-        <label>
-          <input type="radio" name="payment-option" value="invoice">
-          <span>Faktura</span>
-        </label>
-        <label>
-          <input type="radio" name="payment-option" value="card">
-          <span>Kort</span>
-        </label>
-      </div>
-
-      <div class="invoice">
-        <label>
-         <span>Personnummer</span>
-         <input type="number" name="personal-id">
-        </label>
-      </div>
-      <!--card-->
-      <div class="card hidden">
-        <label>
-          <span>Kortnummer</span>
-          <input type="number">
-        </label>
-        <label>
-          <span>Datum</span>
-          <span>
-            <input type="number" class="small" placeholder="YY">/ <input type="number" class="small">
-          </span>
-        </label>
-        <span>CVC</span>
-        <input type="number" placeholder="123">
-      </div>
-
-      <button id="order" disabled> Beställ</button>
-
-    </div>
+    
 
     
   </main>
