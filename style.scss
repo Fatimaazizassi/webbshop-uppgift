@@ -6,8 +6,8 @@
   background-color: #fad2f8;
 
   
-  color: rgba(242, 22, 22, 0.87);
-  background-color: #ffffff;
+  color: rgba(16, 16, 16, 0.87);
+  background-color: #fdf90d;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -98,6 +98,39 @@ button:focus-visible {
 }  
   */
 
+  body{
+    background-color:#ffff;
+  }
+
+  body.dark-theme{
+    background-color: #f7f7c0;
+    justify-items: end;
+   
+  }
+  
+  .header{
+    display:flex;
+    grid-column: span 12;
+    justify-content: space-between;  
+
+}
+#cart{
+  grid-column: span 12;
+  display: grid;
+  grid-column: 5 span;
+  background-color: #45e34a;
+}
+ .topay{
+ 
+  text-align: right;
+  align-items: right;
+  justify-content: end;
+
+ }
+
+
+
+
   .hidden{
     display: none;
   }
@@ -114,7 +147,7 @@ button:focus-visible {
   display: grid;
   flex-direction: column;
   grid-template-columns: repeat(12, 1fr);
-  background-color:#bbfaf9;
+  
   
  }
  #chipsesContainer{

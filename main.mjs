@@ -2,6 +2,20 @@
 
  import chipses from "./produckt.mjs"; // import produckt fil
 
+
+ // chenge page
+ const themeToggle = document.querySelector('#themeToggle');
+ // add Event
+ themeToggle.addEventListener('click', chengePage);
+
+ function chengePage() {
+  if (document.body.classList.contains('dark-theme')) {
+    document.body.classList.remove('dark-theme');  
+  } else {
+    document.body.classList.add('dark-theme');
+  }
+ }
+
   // kort & faktora
   const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment-option"]'));
   const inputs=[
@@ -151,7 +165,7 @@ function printchipses(){
       <h3 class=" chips-title">${chips.name} </h3>
       <img src="${chips.img.src}" alt="${chips.img.alt}" width="${chips.img.width}"
       heigh= "${chips.img.height}" loading="lazy">
-      <div class=" price">Price: <span>${chips.price * priceIncrease}</span> kr </div>
+      <div class=" price">Price: <span>${chips.price * priceIncrease}</span> kr/st </div>
       <div class=" raning">Raing: <span>${chips.rating}</span></div>
       <div class="description">Description: <span>${chips.description}</span><div>
       <div class="amount">Amount: <span>${chips.amount}</span> </div>
@@ -196,8 +210,8 @@ function printCartchipses(){
       const adjustDounatPrice = chips.price * priceIncrease;
       sum += chips.amount * adjustDounatPrice;
       cartHtmlContainer.innerHTML += `
-      <article>
-        <span> ${chips.name}</span> | <span>${chips.amount}</span> | <span> ${chips.amount * adjustDounatPrice} kr </span>
+      <article class="topay">
+        <span> ${chips.name}${chips.amount} st</span> <span> ${chips.amount * adjustDounatPrice} kr </span>
        </article>
       `;
     }
@@ -216,14 +230,14 @@ function printCartchipses(){
   }
 
 
-  cartHtmlContainer.innerHTML += `<p>Total sum: ${sum} Kr</p>`;
-  cartHtmlContainer.innerHTML += `<div> ${msg}</div>`;
+  cartHtmlContainer.innerHTML += `<p class="topay">Total sum: ${sum} Kr</p>`;
+  cartHtmlContainer.innerHTML += `<div class="topay"> ${msg}</div>`;
 
   if ( orderchipsAmount > 15){
-    cartHtmlContainer.innerHTML += '<p> Shipping: 0 Kr</p>';
+    cartHtmlContainer.innerHTML += '<p class="topay"> Shipping: 0 Kr</p>';
   } else{
 
-  cartHtmlContainer.innerHTML += `<p> Shipping: ${Math.round(25 + (0.1 * sum))} Kr</p>`;
+  cartHtmlContainer.innerHTML += `<p class="topay"> Shipping: ${Math.round(25 + (0.1 * sum))} Kr</p>`;
 
   }
 
