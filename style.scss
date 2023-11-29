@@ -107,6 +107,35 @@ button:focus-visible {
     justify-items: end;
    
   }
+  @media screen and (prefers-color-sheme: dark) {
+  body {
+   background: #5c0206;
+    
+  }
+}
+
+.hidden{
+  display: none;
+}
+
+.viseble {
+display: block;
+}
+
+#cartButton{
+  background-color: #f9ed0e;
+  border-radius:5px;
+ border-color: #f6f60b;
+  
+}
+#goBack{
+  background-color: #f9ed0e;
+  border-radius:5px;
+ border-color: #f6f60b;
+  
+}
+
+  
   
   .header{
     display:flex;
@@ -131,10 +160,7 @@ button:focus-visible {
 
 
 
-  .hidden{
-    display: none;
-  }
-  
+ 
   h1{
     grid-column:span 12;
     text-align: center;
@@ -180,5 +206,15 @@ article{
   justify-items: center;
  }
 
+ #orderBtnClick{
+  font-size:large;
+  background-color: #fdf90d;
+ border-radius:5px;
+ border-color: #f6f60b;
+  
+}
+
+
+ 
 
  

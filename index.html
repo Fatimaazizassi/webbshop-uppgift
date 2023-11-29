@@ -14,19 +14,42 @@
    
     <h1>Snack Fabric</h1>
     <header class="header">
-       <!-- cash-->
+    <!--cash -->
+      <button id="cartButton"><span class="material-symbols-outlined"> shopping_cart</button>
+
+        <!--back to page-->
+        <button id="goBack"><span class="material-symbols-outlined">
+          home
+          </span></button>
+       
      
-     <!--växla sida-->
-     <button id="themeToggle"> <span class="material-symbols-outlined">
-       shopping_cart
-       </span></button>
     </header>
-    <div id="cart"></div>
+    <div id="cart">
+      <button id="cartBtn"> KNAPP</button>
+    </div>
     
    <!-- card & faktura-->
-    <div class="payment-options">
+    <div id="money" class="payment-options hidden">
+      <!-- form fil-->
+      <form name="customerForm">
+        Please fill your contact details: 
+        Namn:
+        <input type="text" name="Namn" placeholder="Namn">
+        Efternamn:
+        <input type="text" name="EfterNamn" placeholder="Efternamn">
+        Addres:
+        <input type="text" name="Addres" placeholder="Addres">
+        Postnummer:
+        <input type="number" name="PostNummer" placeholder="Postnummer">
+        Ort:
+        <input type="text" name="Ort" placeholder="Ort">
+        E-mail:
+        <input type="email" name="E-mail" placeholder="E-mail">
+        <input type="submit" value="Skicka">
+      </form> 
+
       <div class="selector">
-        <label>
+        <label> Please selekt your payment method
           <input type="radio" name="payment-option" value="invoice" >
           <span>Faktura</span>
         </label>
@@ -68,7 +91,19 @@
    
     <!-- bild id-->
     <div id="chips"></div>
+
+    <!--beställ knapp -->
+    <div id="orderForm">
+      <input type="text" placeholder="Namn" id="firstName">
+      <input type="submit" value="Beställ" id="orderBtnClick">
+    </div>
     
+
+    <!--meddelane för bestälning-->
+    <div class="hidden" id="orderConfirmation">
+      Tack för din bestälning , <span id="nameFirst"></span>
+    </div>
+   
 
     
    
@@ -77,7 +112,7 @@
     
   </main>
 
-    <script type="module" src="main.mjs"></script>
+    <script type="module" src="main.js"></script>
   
   </body>
 </html>
