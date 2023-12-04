@@ -13,6 +13,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ 
 }
 /*
 a {
@@ -115,7 +116,7 @@ button:focus-visible {
 }
 
 .hidden{
-  display: none;
+  display: none ;
 }
 
 .viseble {
@@ -130,24 +131,36 @@ display: block;
 }
 #goBack{
   background-color: #f9ed0e;
-  border-radius:5px;
- border-color: #f6f60b;
   
 }
 
   
   
-  .header{
-    display:flex;
+  #header{
+    display: flex;
     grid-column: span 12;
-    justify-content: space-between;  
+   justify-content: end;
+   max-height: 15vh;
+   
+   
 
-}
+
+
+#headerButton{
+  
+  align-items: end;
+  grid-column: span ;
+  justify-content: space-between
+}}
+
 #cart{
   grid-column: span 12;
   display: grid;
   grid-column: 5 span;
-  background-color: #45e34a;
+  
+  min-height: 15vh;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: small;
 }
  .topay{
  
@@ -165,6 +178,9 @@ display: block;
     grid-column:span 12;
     text-align: center;
     color: #5c0206;
+    background-color: #fdf90d;
+    font-size: 3rem;
+    font-family:monospace;
   }
 
 
@@ -183,11 +199,13 @@ display: block;
   grid-template-columns: repeat(12, 1fr);
  }
 
+
  #cart{
   display: grid;
   grid-column: span 12;
   font-size: large;
   justify-content: end;
+  background-color: #f8f4a4;
  }
 article{
   width: 100%;
@@ -198,6 +216,8 @@ article{
   font-size:large;
   display: grid;
   justify-items: center;
+  padding-top: 0px;
+ 
 }
  .chips-title{
   font-size: 1,95rem;
@@ -212,6 +232,53 @@ article{
  border-radius:5px;
  border-color: #f6f60b;
   
+}
+p{
+  padding-right: 15px;
+}
+.topay{
+  margin-top: 0px;
+  display: inline;
+  padding-left: 0px;
+  margin: 0%;
+}
+#favorit{
+  font-size: larger;
+  
+ }
+ #bil{
+  font-size:2rem;
+  justify-content: center;
+ }
+ h3{
+
+  color: #5c0206;
+  text-align: center;
+  padding-top: 5px;
+  margin-left: 30px;
+  margin-left: 0px;
+  
+
+ }
+ .faktura{
+  color: #0a0909;
+  
+ }
+ form{
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+ 
+  margin-left: 40px;
+ }
+
+ .card{
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+  
+  margin-left: 40px;
+ }
+ .card.hidden {
+  display: none !important;
 }
 
 

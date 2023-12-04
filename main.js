@@ -8,7 +8,7 @@ const chipsContainer = document.querySelector('#chips');
 const chipses = [
   {
     name:'Olw Hot Cheddar Chips',
-    price:23,
+    price:10,
     img:
       {
         src:'images/chips1.jpg',
@@ -206,89 +206,101 @@ const chipses = [
 
   // kort & faktora
   const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment-option"]'));
-  const inputs=[
+  const inputs= [
     document.querySelector('#creditCardNumber'),
     document.querySelector('#creditCardYear'),
     document.querySelector('#creditCardMonth'),
     document.querySelector('#creditCardCvc'),
-    document.querySelector('#personalID')
+    document.querySelector('#personalID'),
   ];
   const invoiceOption = document.querySelector('#invoice');
   const cardOption = document.querySelector('#card');
 
-   // defauld option till faktora
-   let selectedPaymentOption = 'card'
+   // defauld option 
+   let selectedPaymentOption = 'card';
   // Regex
   const personalIdRegEx = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
+ 
+ const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/); // MasterCard
 
-
+ const creditCardMonthRegEx = new RegExp (/^(0[1-9]|[10-2])$/);
   //aktivera knapp beställ
   const orderBtn = document.querySelector('#orderBtn');
-  // Regex
- // MasterCard
- const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/); 
   
   // Add event listeners
   inputs.forEach(input => {
-    input.addEventListener('focusout', activaiteOrderButton);
-    input.addEventListener('change', activaiteOrderButton);
+    input.addEventListener('focusout', activateOrderButton);
+    input.addEventListener('change', activateOrderButton);
   });
   cardInvoiceRadios.forEach(radioBtn =>{
    radioBtn.addEventListener('change', switchPaymentMethod);
  
   });
 
- /**
+ /*
   * Switches between invoice payment method and
   * card payment method. Toggles their visibility.
   */
   function switchPaymentMethod(e) {
+    console.log('switch');
+    cardOption.classList.toggle('hidden');
    invoiceOption.classList.toggle('hidden');
-   cardOption.classList.toggle('hidden');
-
-   selectedPaymentOption = e.target.value;
+ 
   
+   selectedPaymentOption = e.target.value;
+
   }
   
   function isPersonalIdNumbervalid(){
-   return personalIdRegEx.exec(personalID.value);
+   return personalIdRegEx.exec(personalId.value);
     
   }
-  /**
+  /*
  * Activate order button if all fields are
  * correctly filled.
  */
-  function activaiteOrderButton() {
+  function activateOrderButton() {
     orderBtn.setAttribute('disabled', '');
   
- // kotrol activeted faktora
-   if (selectedPaymentOption === 'invoice' && isPersonalIdNumbervalid()){
+ // kontrol activeted faktura
+   if (selectedPaymentOption === 'invoice' && !isPersonalIdNumbervalid()) {
       orderBtn.removeAttribute ('disabled');
- 
-   } else if (selectedPaymentOption ==='invoice' && !isPersonalIdNumbervalid()) {
-     return;
-   } else if (selectedPaymentOption ==='card'){
+    }
+   
+    else if (selectedPaymentOption ==='invoice' && !isPersonalIdNumbervalid()) {
+      return;
+   } 
+
+   else if (selectedPaymentOption ==='card') {
      // check card number
      if (creditCardNumberRegEx.exec(creditCardNumber.value) === null) {
  
        return;
      }
-     // kontrol card year
+ 
+     // Check card year
      let year = Number(creditCardYear.value);
      const today = new Date();
      const shortYear = Number(String(today.getFullYear()).substring(2));
- 
+     
      if (year > shortYear + 2 || year < shortYear) {
        console.warn('Credit card year not valid.');
        return;
      }
+     //  Check card month
+     if (creditCardMonthRegEx.exec(creditCardMonth.value) === null) {
+ 
+      return;
+    }
+    
      // Check card CVC
      if (creditCardCvc.value.length !== 3) {
-       console.warn('CVC not valid.');
-       return;
-   }
+      console.warn('CVC not valid.');
+      return;
+     }
+    }
     
- }
+ 
  orderBtn.removeAttribute ('disabled');
  
 }
@@ -306,7 +318,7 @@ const letslowneesTimeout = setTimeout(stupidCustomerMessage, 1000 * 60 * 15 );
 
 
 function stupidCustomerMessage(){
-  alert ( 'Du är för långsam att beställa ! skynda på');
+  alert ( 'Du är för långsam att beställa !');
 }
 
 function decreaseAmount(e) {
@@ -329,9 +341,7 @@ function increaseAmount(e) {
   function getPriceMultiplier (){
     if ((isFriday && currentHour >= 15) || (isMonday && currentHour <= 3)){
     return 1.15;
-    
-  
-
+ 
     }
     return 1;
 
@@ -381,7 +391,7 @@ function printCartchipses(){
   cartHtmlContainer.innerHTML ='';
     let sum = 0;  // total summan
     let orderchipsAmount = 0;
-    let msg=''; // 10% rabat
+    let msg=''; // 10% rabatt
     let priceIncrease = getPriceMultiplier();
 
     //cart
@@ -390,13 +400,15 @@ function printCartchipses(){
     if(chips.amount > 0) {
       let chipsPrice = chips.price;
         if (chips.amount >= 10){
+          console.log('rabat')
           chipsPrice *= 0.9;
         }
       const adjustDounatPrice = chips.price * priceIncrease;
-      sum += chips.amount * adjustDounatPrice;
+      const totalDiscounted = chips.amount * adjustDounatPrice;
+      sum += chips.amount * adjustDounatPrice; // muliplication
       cartHtmlContainer.innerHTML += `
       <article class="topay">
-        <span> ${chips.name}${chips.amount} st</span> <span> ${chips.amount * adjustDounatPrice} kr </span>
+        <span> ${chips.name}${chips.amount}st</span> <span> ${totalDiscounted} kr </span>
        </article>
       `;
     }
@@ -406,7 +418,7 @@ function printCartchipses(){
   if (sum <= 0) {
     return;
   }
-
+  // 10% rabbat på hela beställning
   if (today.getDay()=== 1){
     sum *= 0.9;
     msg += '<p>Måndagsrabatt: 10 % på hela beställningen</p>'
@@ -415,18 +427,41 @@ function printCartchipses(){
   }
 
 
-  cartHtmlContainer.innerHTML += `<p class="topay">Total sum: ${sum} Kr</p>`;
+  cartHtmlContainer.innerHTML += `<p class="topay">Total: ${sum} Kr</p>`;
   cartHtmlContainer.innerHTML += `<div class="topay"> ${msg}</div>`;
 
   if ( orderchipsAmount > 15){
-    cartHtmlContainer.innerHTML += '<p class="topay"> Shipping: 0 Kr</p>';
+    cartHtmlContainer.innerHTML += '<p class="topay"> Frakt: 0 Kr</p>';
   } else{
 
-  cartHtmlContainer.innerHTML += `<p class="topay"> Shipping: ${Math.round(25 + (0.1 * sum))} Kr</p>`;
+// shipping sum & chash button & gobach page button
+  cartHtmlContainer.innerHTML += `<p class="topay"><span id="bil" class="material-symbols-outlined">
+  local_shipping
+  </span>: ${Math.round(25 + (0.1 * sum))} Kr</p>
   
+  
+  `;
+
+// chash button
+ const cartButton = document.querySelector('#cartButton');
+  cartButton.addEventListener('click',function()
+  {
+    document.getElementById("chipsesContainer").style.display = "none";
+    document.getElementById("money").style.display = "block";
+
+  });
+
+
+
+  const goBack = document.querySelector('#goBack');
+  goBack.addEventListener('click', function(){
+
+  document.getElementById("chipsesContainer").style.display = "grid";
+  document.getElementById("money").style.display = "none";
+});
+ 
   }
 }
-
 
 printchipses();
 
@@ -435,37 +470,19 @@ printchipses();
 const orderBtnClick = document.querySelector('#orderBtnClick');
 orderBtnClick.addEventListener('click', showOrder);
 
+
 function showOrder(){
   // dölj besällningsformuläret
-  const orderForm =document.querySelector('#orderForm')
+  const orderForm =document.querySelector('#orderBtn')
   orderForm.classList.add('hidden');
 
   // vissa beställnings bäkreftelsen
-  const orderConfirmation =document.querySelector('#orderConfirmation')
+  const orderConfirmation = document.querySelector('#orderConfirmation')
   orderConfirmation.classList.remove('hidden');
 
   //hämta namn
   const clienName = document.querySelector('#firstName').value;
   document.querySelector('#nameFirst').innerHTML=clienName;
 
-}
-
-
-
-const cartButton = document.querySelector('#cartButton');
-cartButton.addEventListener('click',cartButtonClick);
-
-function cartButtonClick() {
- 
-  document.getElementById("chipsesContainer").style.display = "none";
-  document.getElementById("money").style.display = "block";
-}
-
-const goBack = document.querySelector('#goBack');
-goBack.addEventListener('click',backPage);
-
-function backPage() {
-  document.getElementById("chipsesContainer").style.display = "block";
-  document.getElementById("money").style.display = "none";
 }
 

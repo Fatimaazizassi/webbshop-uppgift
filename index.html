@@ -10,29 +10,28 @@
   </head>
   <body>
     <main>
-
-   
     <h1>Snack Fabric</h1>
-    <header class="header">
-    <!--cash -->
-      <button id="cartButton"><span class="material-symbols-outlined"> shopping_cart</button>
 
-        <!--back to page-->
-        <button id="goBack"><span class="material-symbols-outlined">
-          home
-          </span></button>
-       
-     
-    </header>
-    <div id="cart">
-      <button id="cartBtn"> KNAPP</button>
+    <!--cash knappar-->
+    <Header id="header">
+      <div id="headerButton">
+        <button id="cartButton"><span class="material-symbols-outlined"> shopping_cart</button>
+        <button id="goBack"><span class="material-symbols-outlined"><span class="material-symbols-outlined">home</button>
+      </div>
+      <div id="favorit"> <span class="material-symbols-outlined">star</span>
+      </div>
+      
+    <!--cash-->
+     <div id="cart">
     </div>
+
+  </Header>
     
-   <!-- card & faktura-->
+   <!-- faktura-->
     <div id="money" class="payment-options hidden">
       <!-- form fil-->
       <form name="customerForm">
-        Please fill your contact details: 
+        <h3>Contact Details: </h3>
         Namn:
         <input type="text" name="Namn" placeholder="Namn">
         Efternamn:
@@ -42,23 +41,28 @@
         Postnummer:
         <input type="number" name="PostNummer" placeholder="Postnummer">
         Ort:
-        <input type="text" name="Ort" placeholder="Ort">
+        <input type="text" name="Ort" placeholder="Postort">
+        Ev. portkod
+        <input type="text" name="portkod" placeholder="portkod">
         E-mail:
         <input type="email" name="E-mail" placeholder="E-mail">
-        <input type="submit" value="Skicka">
+        <!--<input type="submit" value="Skicka"> -->
       </form> 
 
+      
+      
       <div class="selector">
-        <label> Please selekt your payment method
+        <label> 
+          
           <input type="radio" name="payment-option" value="invoice" >
-          <span>Faktura</span>
+          <span class="faktura">Faktura</span>
         </label>
         <label>
           <input type="radio" name="payment-option" value="card" checked>
           <span>Kort</span>
         </label>
       </div>
-
+ <!--invoice-->
       <div class="invoice hidden" id="invoice">
         <label>
          <span>Personnummer</span>
@@ -78,25 +82,29 @@
             <input type="number" class="small" placeholder="MM" id="creditCardMonth">
           </span>
         </label>
+        <label>
         <span>CVC</span>
         <input type="number" placeholder="123" id="creditCardCvc">
+      </label>
       </div>
 
-      <button id="orderBtn" disabled> Beställ</button>
+     <button id="orderBtn" disabled> Beställ </button>
+        <input type="text" placeholder="Namn" id="firstName">
+        <input type="submit" value="Beställ" id="orderBtnClick"> 
+     
+    
 
     </div>
     
     <div id="chipsesContainer"></div>
-    <h2>Cart</h2>
+    
    
     <!-- bild id-->
     <div id="chips"></div>
 
-    <!--beställ knapp -->
-    <div id="orderForm">
-      <input type="text" placeholder="Namn" id="firstName">
-      <input type="submit" value="Beställ" id="orderBtnClick">
-    </div>
+    <!--beställ knapp  -->
+    
+   
     
 
     <!--meddelane för bestälning-->
