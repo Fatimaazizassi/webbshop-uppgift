@@ -24,6 +24,8 @@ const chipses = [
     amount: 0,
     category:'snack',
     description:'Flavored chips popular OLW cheez cruncherz flamin',
+  
+  
   },
   
   {
@@ -37,7 +39,7 @@ const chipses = [
         height: 450,
         },
              
-    rating:3,
+    rating:4,
     amount: 0,
     category:'snack',
     description:'Brittle and crispy corn rings flavored with mild cheese seasoning.',
@@ -53,7 +55,7 @@ const chipses = [
       height: 450,
     },
        
-    rating:3,
+    rating:5,
     amount: 0,
     category:'snack',
     description:'tortilla chip made from freshly roasted corn, with the delicious taste of sweet chili peppe',
@@ -70,7 +72,7 @@ const chipses = [
         height: 450,
     },
        
-    rating:3,
+    rating:4,
     amount: 0,
     category:'snack',
     description:'Finely grooved potato chips with garlic, tomato, cheese, onion and sour cream flavour.',
@@ -90,7 +92,7 @@ const chipses = [
     rating:3,
     amount: 0,
     category:'snack',
-    description:'Coarsely grooved with daring tones of sea salt & black pepper!',
+    description: 3,
   },
   
   
@@ -106,7 +108,7 @@ const chipses = [
   
     },
        
-    rating:3,
+    rating:4,
     amount: 0,
     category:'snack',
     description:'Cheese bows with the same good taste as the original cheez doodles but extra crispy and crunchy',
@@ -125,7 +127,7 @@ const chipses = [
       },
          
     
-    rating:3,
+    rating:2,
     amount: 0,
     category:'snack',
     description:'Ribbed potato chips, lightly salted 250g',
@@ -143,7 +145,7 @@ const chipses = [
     },
        
   
-  rating:3,
+  rating:4,
   amount: 0,
   category:'snack',
   description:'Lays Chips Sour Cream & Onion ',
@@ -161,7 +163,7 @@ const chipses = [
     },
        
   
-  rating:3,
+  rating:5,
   amount: 0,
   category:'snack',
   description:'tortilla chip made from freshly roasted corn, with the delicious taste of sweet chili pepper',
@@ -212,6 +214,15 @@ const chipses = [
     document.querySelector('#creditCardMonth'),
     document.querySelector('#creditCardCvc'),
     document.querySelector('#personalID'),
+    document.querySelector('#firstName'),
+    document.querySelector('#lastName'),
+    document.querySelector('#adress'),
+    document.querySelector('#postNummer'),
+    document.querySelector('#postOrt'),
+    document.querySelector('#portKod'),
+    document.querySelector('#tel'),
+    document.querySelector('#email'),
+
   ];
   const invoiceOption = document.querySelector('#invoice');
   const cardOption = document.querySelector('#card');
@@ -219,6 +230,13 @@ const chipses = [
    // defauld option 
    let selectedPaymentOption = 'card';
   // Regex
+  const firstNameRegExp = new RegExp(/^[a-zA-ZäöåÄÖÅ]+$/);
+  const addressRegExp = new RegExp(/^[A-z0-9\s]+$/);
+  const PostNummerRegExp = new RegExp(/[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z][A-Z]/);
+  const postOrtRegExp = new RegExp(/([0-9]{4})(?![0-9])/);
+  const portKodRegExp = new RegExp(/^[a-zA-Z\u4e00-\u9eff\s'-.]+$/);
+  const emailRegExp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/); 
+  const telRegExp = new RegExp(/^[0-9]{10}$/);
   const personalIdRegEx = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
  
  const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/); // MasterCard
@@ -270,6 +288,43 @@ const chipses = [
     else if (selectedPaymentOption ==='invoice' && !isPersonalIdNumbervalid()) {
       return;
    } 
+
+   if (firstNameRegExp.exec(firstName.value) === null){
+    console.warn('First Name wrong');
+    return;
+  }
+ if (firstNameRegExp.exec(lastName.value) === null){
+    console.warn('Last Name wrong');
+    return;
+  }
+  if (telRegExp.exec(tel.value) === null){
+    console.warn('tel not valid');
+    return;
+  }
+
+  if (postOrtRegExp.exec(postOrt.value) === null){
+    console.warn('name not valid');
+    return;
+  }
+  if (portKodRegExp.exec(portKod.value) === null){
+    console.warn('number not valid');
+    return;
+  }
+
+ if (emailRegExp.exec(email.value) === null){
+    console.warn('email not valid');
+    return;
+  }
+ 
+
+  if (addressRegExp.exec(adress.value) === null){
+    console.warn('address not valid');
+    return;
+  }
+  if (PostNummerRegExp.exec(PostNummer.value) === null){
+    console.warn('number not valid');
+    return;
+  }
 
    else if (selectedPaymentOption ==='card') {
      // check card number
@@ -359,8 +414,9 @@ function printchipses(){
       <img src="${chips.img.src}" alt="${chips.img.alt}" width="${chips.img.width}"
       heigh= "${chips.img.height}" loading="lazy">
       <div class=" price">Price: <span>${chips.price * priceIncrease}</span> kr/st </div>
-      <div class=" raning">Raing: <span>${chips.rating}</span></div>
+      <div class="rating">Rating: <span>${chips.rating}</span></div>
       <div class="description">Description: <span>${chips.description}</span><div>
+      </span><span>${chips.favorit}</span><div>
       <div class="amount">Amount: <span>${chips.amount}</span> </div>
       <button class="minus" data-id="${index}"> - </button>
       <button class="plus" data-id="${index}"> + </button>

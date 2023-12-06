@@ -22,38 +22,39 @@
       </div>
       
     <!--cash-->
-     <div id="cart">
-    </div>
-
+     <div id="cart"></div>
+   
   </Header>
     
    <!-- faktura-->
     <div id="money" class="payment-options hidden">
-      <!-- form fil-->
-      <form name="customerForm">
-        <h3>Contact Details: </h3>
-        Namn:
-        <input type="text" name="Namn" placeholder="Namn">
-        Efternamn:
-        <input type="text" name="EfterNamn" placeholder="Efternamn">
-        Addres:
-        <input type="text" name="Addres" placeholder="Addres">
-        Postnummer:
-        <input type="number" name="PostNummer" placeholder="Postnummer">
-        Ort:
-        <input type="text" name="Ort" placeholder="Postort">
-        Ev. portkod
-        <input type="text" name="portkod" placeholder="portkod">
-        E-mail:
-        <input type="email" name="E-mail" placeholder="E-mail">
-        <!--<input type="submit" value="Skicka"> -->
-      </form> 
-
-      
       
       <div class="selector">
+        <!-- form fil-->
+        <form name="customerForm">
+          <h3>Contact Details</h3>
+          Namn:
+          <input type="text" id="firstName" name="Namn" placeholder="Namn">
+          Efternamn:
+          <input type="text" id="lastName" name="EfterNamn" placeholder="Efternamn">
+          Addres:
+          <input type="text" id="adress" name="Addres" placeholder="Addres">
+          Postnummer:
+          <input type="number" id="postNummer" name="postNummer" placeholder="postnummer" value="RG10 9QX">
+          Ort:
+          <input type="text" id="postOrt" name="Ort" placeholder="Postort">
+          Ev. portkod
+          <input type="text" id="portKod" name="portKod" placeholder="Portkod">
+          Telefon:
+          <input type="number" id="tel" name="tel" placeholder="MobilNummer">
+          E-mail:
+          <input type="email" id="email" name="E-mail" placeholder="E-mail">
+          <!--Gdpr & Subscription input -->
+          Accept Gdpr <input type="checkbox" id="gdbr" name="gdbr" value="gdbr">
+          Subscription <input type="checkbox" id="Subscription" name=" Subscription" value="Subscription" checked >
+        </form> 
+        <h3>Payment Method </h3>
         <label> 
-          
           <input type="radio" name="payment-option" value="invoice" >
           <span class="faktura">Faktura</span>
         </label>
@@ -88,9 +89,10 @@
       </label>
       </div>
 
-     <button id="orderBtn" disabled> Beställ </button>
+     <button id="orderBtn" disabled> Beställ 
         <input type="text" placeholder="Namn" id="firstName">
-        <input type="submit" value="Beställ" id="orderBtnClick"> 
+      </button>
+       <!-- <input type="submit" value="Beställ" id="orderBtnClick"> -->
      
     
 

@@ -103,7 +103,7 @@ button:focus-visible {
     background-color:#ffff;
   }
 
-  body.dark-theme{
+ /* body.dark-theme{
     background-color: #f7f7c0;
     justify-items: end;
    
@@ -113,6 +113,17 @@ button:focus-visible {
    background: #5c0206;
     
   }
+}*/
+.minus{
+  background-color: #f9ed0e;
+  border-color:#9d9d79;
+  
+  
+}
+.plus{
+  background-color: #f9ed0e;
+  border-color:#9d9d79;
+  
 }
 
 .hidden{
@@ -131,6 +142,7 @@ display: block;
 }
 #goBack{
   background-color: #f9ed0e;
+  border-color:#f6f60b;
   
 }
 
